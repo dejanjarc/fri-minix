@@ -1,8 +1,12 @@
 # FRI Minix Docker Environment
 
-This documentation file provides instructions for setting up and using the FRI Minix Docker environment.
+This documentation file provides instructions for setting up and using the **FRI Minix Docker environment**.
+
+This project is a part of the Bachelor Thesis titled **Instructional Operating Systems** by Dejan Jarc from the Faculty of Computer Science and Informatics (University of Ljubljana, Slovenia). It is meant to serve as a pedagogical tool for OS courses, but can also be used by any OS enthusiast.
+
 
 ## Prerequisites
+
 Before proceeding, ensure you have the following prerequisites set up:
 
 1. **Install Docker and Docker Compose**:
@@ -107,13 +111,15 @@ The container home directory contains:
 - a **Minix ISO image** (`minix_v$VERSION.iso`)
 - scripts **`run.sh`** and **`setup.sh`** for streamlining the running and setup process for Minix
 
+
+---
 ## Setting up Minix
 
 That can be done in two ways:
     1. [using the provided ISO image](#iso-image)
     2. [cross-compiling from source code](#cross-compiling-from-source-code)
 
-1. ###### **ISO image**
+1. #### **ISO image**
 
     1) You can execute **`setup.sh`** for creating an `.img` file, which can then be used to boot with the `.iso` file provided. After an `.img` file exists (including the one you create [here](#cross-compiling-from-source-code)), you can use **`run.sh`** to boot Minix from that image file.
         > You can also manually follow this [QEMU/KVM guide](https://wiki.minix3.org/doku.php?id=usersguide:runningonqemu) which were the basis for the scripts.
@@ -135,7 +141,7 @@ That can be done in two ways:
 
     > **IMPORTANT :** To exit Minix after you ran QEMU (with `run.sh`, `setup.sh` or manually) you can hit **`ALT+2`** to switch to the QEMU monitor console and input **`quit`** to stop QEMU.  
 
-2. ###### **Cross-compiling from source code**
+2. #### **Cross-compiling from source code**
 
     In this step it is expected you build your own Minix image. There are scripts present in the `minix-master` source directory.
 
@@ -157,8 +163,19 @@ That can be done in two ways:
     bash run.sh -n <MINIX_IMG.img>
     ```
 
+## Using Minix
 
+Once you have Minix ready to use you can start using and developing it! You can look into [the documentation](https://wiki.minix3.org/doku.php?id=www:documentation:start). There are a lot of useful guides that will help you through the Minix journey.
 
+For development you should read [the development guide](https://wiki.minix3.org/doku.php?id=developersguide:start). There are also many forums and dev groups. There is also the [Github repository](https://github.com/Stichting-MINIX-Research-Foundation/minix) where you could get help by opening an issue or look through already solved issues and pull requests.
+
+The main documentation is the book titled **Operating Systems: Design and Implementation 3/e by Andrew S. Tanenbaum and Albert S. Woodhull**. It is generally available on the Internet or can be purchased as a physical copy. 
+
+---
+## References
+- [Minix 3 Wiki](https://wiki.minix3.org/)
+- [Minix Github repository](https://github.com/Stichting-MINIX-Research-Foundation/minix)
+- *Operating Systems: Design and Implementation 3/e* by Andrew S. Tanenbaum and Albert S. Woodhull, Prentice Hall, 2006
 ---
 ## Notes
 

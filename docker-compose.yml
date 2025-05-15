@@ -1,0 +1,19 @@
+# Docker Compose file for Minix
+# Usage: this file is used to build and run the Minix container.
+
+# To build the container, use the command: docker-compose build
+# To run the container, use the command: docker-compose up -d
+# To stop the container, use the command: docker-compose down
+# To connect to the container, use the command: 
+#       docker exec -it fri-minix /bin/bash 
+# OR    docker attach fri-minix
+
+services:
+  fri-minix:
+    container_name: fri-minix
+    image: dejanjarc/fri-minix
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true

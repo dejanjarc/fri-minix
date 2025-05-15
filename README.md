@@ -4,6 +4,7 @@ This documentation file provides instructions for setting up and using the **FRI
 
 This project is a part of the Bachelor Thesis titled **Instructional Operating Systems** by Dejan Jarc from the Faculty of Computer Science and Informatics (University of Ljubljana, Slovenia). It is meant to serve as a pedagogical tool for OS courses, but can also be used by any OS enthusiast.
 
+> The base system we are using in this project is **Debian 10.9**.
 
 ## Prerequisites
 
@@ -116,8 +117,13 @@ The container home directory contains:
 ## Setting up Minix
 
 That can be done in two ways:
-    1. [using the provided ISO image](#iso-image)
-    2. [cross-compiling from source code](#cross-compiling-from-source-code)
+1. [using the provided ISO image](#iso-image)
+
+2. [cross-compiling from source code](#cross-compiling-from-source-code)
+
+The credentials for the system withing the container are: 
+Username = **minix**, password = **minix** 
+> If needed, you can freely install any packages you may require. If admin rights are needed, use the mentioned credentials.
 
 1. #### **ISO image**
 

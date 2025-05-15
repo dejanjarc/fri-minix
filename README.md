@@ -13,7 +13,7 @@ Before proceeding, ensure you have the following prerequisites set up:
     Make sure Docker and Docker Compose are installed on your system. You can download and install them from the [Docker website](https://www.docker.com/). **The best way is to setup [Docker Desktop](https://www.docker.com/products/docker-desktop/).**
     
 
-    Note: For Windows users, it is recommended to enable Windows Subsystem for Linux (WSL) within Docker Desktop for better compatibility.
+    > For Windows users, it is recommended to enable *Windows Subsystem for Linux (WSL)* within Docker Desktop for better compatibility.
 
 2. **Verify Docker Installation**:
     Confirm that Docker is installed and running by executing:
@@ -180,5 +180,5 @@ The main documentation is the book titled **Operating Systems: Design and Implem
 ## Notes
 
 - Ensure Docker and Docker Compose are installed on your system before proceeding.
-- Use the scripts in the home directory to streamline repetitive tasks. Use flag `-h` or `--help` when running the scripts to get more information. 
-- If there are any bugs you wish to report, open an issue or do a pull request with your solution.
+- Use the scripts in the home directory to streamline repetitive tasks. Use flag `-h` or `--help` when running the scripts to get more information.
+- If there are any bugs you wish to report, [open an issue or do a pull request with your solution](https://github.com/dejanjarc/fri-minix).

@@ -59,7 +59,7 @@ The flag `-d` is there so that we run the container detached.
     ```
     You need to run this commant to start the container again if you detach:
     ```bash
-    docker start minix
+    docker start <CONTAINER_NAME>
     ``` 
     > It is recommended to use the `docker exec` instead so that your container doesn't always stop after you detach from it.
 
@@ -101,7 +101,7 @@ You are now ready to use the FRI Minix Docker environment.
     ```
     You need to run this commant to start the container again if you detach:
     ```bash
-    docker start minix
+    docker start <CONTAINER_NAME>
     ``` 
     > It is recommended to use the `docker exec` instead so that your container doesn't always stop after you detach from it.
 ---
@@ -168,7 +168,7 @@ Username = **minix**, password = **minix**
     ```bash
     bash run.sh -n <MINIX_IMG.img>
     ```
-
+---
 ## Using Minix
 
 Once you have Minix ready to use you can start using and developing it! You can look into [the documentation](https://wiki.minix3.org/doku.php?id=www:documentation:start). There are a lot of useful guides that will help you through the Minix journey.
@@ -181,7 +181,7 @@ The main documentation is the book titled **Operating Systems: Design and Implem
 ## References
 - [Minix 3 Wiki](https://wiki.minix3.org/)
 - [Minix Github repository](https://github.com/Stichting-MINIX-Research-Foundation/minix)
-- *Operating Systems: Design and Implementation 3/e* by Andrew S. Tanenbaum and Albert S. Woodhull, Prentice Hall, 2006
+- *Operating Systems: Design and Implementation 3/e* by Andrew S. Tanenbaum and Albert S. Woodhull. Prentice Hall, 2006.
 ---
 ## Notes
 

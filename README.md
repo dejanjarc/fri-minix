@@ -25,7 +25,9 @@ Before proceeding, ensure you have the following prerequisites set up:
 ---
 ## Getting Started
 
-You can setup the Docker environment using Docker Hub.
+You can setup the Docker environment using Docker Hub. The image is built for the `linux/amd64` architecture (i.e. 64-bit Intel/AMD CPUs). If your machine uses this architecture, you can **directly pull the image from Docker Hub** and run it without issues.
+
+**Warning :** If you are using **a non-`amd64` platform** (like Apple M1/M2/M3 or ARM-based systems, Docker may attempt to emulate the architecture which can be slower or unsupported. You can build the image yourself by following the steps [**here**](#alternative-for-getting-started).
 
 1. **Pull the image from Docker Hub**
 
@@ -65,7 +67,9 @@ The flag `-d` is there so that we run the container detached.
 
 You are now ready to use the FRI Minix Docker environment.
 
-#### **Alternative for getting started** 
+#### **Alternative for getting started**
+You may want to build your own Docker image, either because you are using a non-`amd64` platform or because you made custom changes to the setup process.
+
 1. **Clone the Repository**:
     Begin by cloning the repository from GitHub to your local machine:
     

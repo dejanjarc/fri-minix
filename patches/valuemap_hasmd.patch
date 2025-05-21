@@ -1,0 +1,11 @@
+--- a/external/bsd/llvm/dist/llvm/include/llvm/IR/ValueMap.h
++++ b/external/bsd/llvm/dist/llvm/include/llvm/IR/ValueMap.h
+@@ -101,7 +101,7 @@
+
+   ~ValueMap() {}
+
+-  bool hasMD() const { return MDMap; }
++  bool hasMD() const { return static_cast<bool>(MDMap); }
+   MDMapT &MD() {
+     if (!MDMap)
+       MDMap.reset(new MDMapT);

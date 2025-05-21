@@ -14,7 +14,6 @@ ARG MINIX_VERSION="3.3.0"
 # You can specify a specific commit or branch if needed.
 ARG MINIX_SRC="https://github.com/Stichting-MINIX-Research-Foundation/minix/archive/refs/heads/master.zip"
 
-
 # Dependency installs + clean up
 RUN apt-get update && apt-get install -y --no-install-recommends \
     qemu-system-x86 \
@@ -34,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     gcc \
     g++ \
-    gcc-multilib \ 
+    gcc-multilib \
     g++-multilib \
     gdb \
     gdb-multiarch \
@@ -45,8 +44,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# --- Runner image --- #
-FROM base AS runner
 
 ARG USER="minix"
 ARG USER_HOME="/home/${USER}"
@@ -56,30 +53,38 @@ RUN useradd --create-home --home-dir "${USER_HOME}" --shell=/bin/bash --user-gro
     chown "${USER}:${USER}" "${USER_HOME}" && \
     echo "${USER}:minix" | chpasswd
 
-WORKDIR ${USER_HOME}
-
-# Get Minix ISO
-RUN wget -q ${MINIX_MIRROR} -O "minix_v${MINIX_VERSION}.iso.bz2"
-RUN bunzip2 "minix_v${MINIX_VERSION}.iso.bz2"
-
-# Get Minix source files (source set in MINIX_SRC)
-RUN wget --no-check-certificate ${MINIX_SRC} -O "minix_src.zip"
-RUN unzip -qq "minix_src.zip"
-RUN rm "minix_src.zip"
- 
 # Copy scripts into WORKDIR
 COPY run.sh ${USER_HOME}/run.sh
 COPY setup.sh ${USER_HOME}/setup.sh
 RUN chmod -R +x ${USER_HOME}/run.sh ${USER_HOME}/setup.sh
-RUN chown -R ${USER}:${USER} ${USER_HOME}
 
-# Set user
+# Change ownership of scripts to user
+RUN chown -R ${USER}:${USER} ${USER_HOME}/run.sh ${USER_HOME}/setup.sh
+
+# Set user and working directory
 USER ${USER}
+WORKDIR ${USER_HOME}
 
-# -- PATCHES -- #
+# Get Minix ISO image & Minix source files (source set in MINIX_SRC)
+RUN wget -q ${MINIX_MIRROR} -O "minix_v${MINIX_VERSION}.iso.bz2" && \
+    bunzip2 "minix_v${MINIX_VERSION}.iso.bz2" && \
+    wget --no-check-certificate ${MINIX_SRC} -O "minix_src.zip" && \
+    unzip -qq "minix_src.zip" && \
+    rm "minix_src.zip"
+
+# ----------------#
+# --   PATCH   -- #
+# Set root user for patching
+USER root
+
 # Patch this issue: https://github.com/Stichting-MINIX-Research-Foundation/minix/pull/301
-RUN rm ${USER_HOME}/minix-master/external/bsd/llvm/dist/llvm/include/llvm/IR/ValueMap.h
-COPY patches/ValueMap.h ${USER_HOME}/minix-master/external/bsd/llvm/dist/llvm/include/llvm/IR/ValueMap.h
+COPY patches/valuemap_hasmd.patch ${USER_HOME}/patches/valuemap_hasmd.patch
+RUN sudo chown -R ${USER}:${USER} ${USER_HOME}/patches
+RUN patch -p1 -d ${USER_HOME}/minix-master < ${USER_HOME}/patches/valuemap_hasmd.patch
 
+# Set user back to minix
+USER ${USER}
+# -- END PATCH -- #
+# ----------------#
 
 CMD ["/bin/bash"]

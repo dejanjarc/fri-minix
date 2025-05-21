@@ -187,4 +187,4 @@ The main documentation is the book titled **Operating Systems: Design and Implem
 
 - Ensure Docker and Docker Compose are installed on your system before proceeding.
 - Use the scripts in the home directory to streamline repetitive tasks. Use flag `-h` or `--help` when running the scripts to get more information.
-- If there are any bugs you wish to report, [open an issue or do a pull request with your solution](https://github.com/dejanjarc/fri-minix).
+- If there are any bugs you wish to report, [open an issue](https://github.com/dejanjarc/fri-minix/issues) or do a [pull request with your solution](https://github.com/dejanjarc/fri-minix/pulls).
